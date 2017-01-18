@@ -1,7 +1,7 @@
 ﻿# Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Неопознанный енот](https://up.htmlacademy.ru/javascript/8/user/336227).
-* Наставник: `HTMLAcademy`.
+* Наставник: `Google`.
 
 ---
 
