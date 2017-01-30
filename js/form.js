@@ -45,10 +45,10 @@ var timeOut = document.querySelector('#timeout');
 timeIn.addEventListener('click', function () {
   for (i = 0; i < timeIn.options.length; i++) {
     if (timeIn.options[i].selected) {
-        timeOut.options[i].selected = true;
-      } else {
-        timeOut.options[i].selected = false;
-      }
+      timeOut.options[i].selected = true;
+    } else {
+      timeOut.options[i].selected = false;
+    }
   }
 });
 
@@ -56,16 +56,22 @@ var rentType = document.querySelector('#type');
 // синхронизируем тип жилья и минимальную цену в поле rentPrice
 rentType.addEventListener('click', function () {
   var rentTypeSelectedIndex = rentType.selectedIndex;
-  if (rentTypeSelectedIndex === 0) { rentPrice.value = '1000'; }
-  if (rentTypeSelectedIndex === 1) { rentPrice.value = '0'; }
-  if (rentTypeSelectedIndex === 2) { rentPrice.value = '10000'; }
+  if (rentTypeSelectedIndex === 0) {
+    rentPrice.value = '1000';
+  }
+  if (rentTypeSelectedIndex === 1) {
+    rentPrice.value = '0';
+  }
+  if (rentTypeSelectedIndex === 2) {
+    rentPrice.value = '10000';
+  }
 });
 var roomNumber = document.querySelector('#room_number');
 var capacityRoom = document.querySelector('#capacity');
 roomNumber.addEventListener('click', function () {
   var roomSelected = roomNumber.selectedIndex;
   if (roomSelected === 0) {
-      capacityRoom.selectedIndex = 1;
+    capacityRoom.selectedIndex = 1;
   } else {
     capacityRoom.selectedIndex = 0;
   }
