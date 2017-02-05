@@ -524,6 +524,9 @@ select option:hover {
     border-radius: 4px;
     border: 2px solid transparent;
 }
+.invisible {
+  display: none !important;
+}
 
 .lodge__title {
     margin: 0 0 4px;
@@ -650,4 +653,8 @@ select option:hover {
 
 .rounded {
     border-radius: 50%;
+}
+button [role="button"] {
+     padding : 3px;
+     border : 2px solid black;
 }
