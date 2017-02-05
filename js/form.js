@@ -1,6 +1,5 @@
 'use strict';
 var ENTER_KEY_CODE = 13;
-var ESCAPE_KEY_CODE = 27;
 
 var isActivateEvent = function (evt) {
   return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
@@ -22,7 +21,7 @@ var tokyoPinMapHandler = function (evt) {
   evt.target.setAttribute('aria-pressed', 'true');
   dialogTitle.src = evt.target.src;
   dialog.classList.remove('invisible');
-}
+};
 tokyoPinMap.addEventListener('click', tokyoPinMapHandler);
 
 tokyoPinMap.addEventListener('keydown', function (evt) {
@@ -31,13 +30,12 @@ tokyoPinMap.addEventListener('keydown', function (evt) {
   }
 });
 
-
-/*var pinElements = tokyoPinMap.querySelectorAll('.pin');
+/* var pinElements = tokyoPinMap.querySelectorAll('.pin');
 for (var i = 0; i < pinElements.length; i++) {
   pinElements[i].addEventListener('click', pinClickHandler);
   pinElements[i].addEventListener('keydown', pinKeyDownHandler);
   pinElements[i].addEventListener('click', dialogHandler);
-}*/
+} */
 var dialogClose = dialog.querySelector('.dialog__close');
 dialogClose.addEventListener('click', function () {
   var pinActiveElement = tokyoPinMap.querySelector('.pin--active');
@@ -60,7 +58,7 @@ rentPrice.min = 1000;
 var timeIn = document.querySelector('#time');
 var timeOut = document.querySelector('#timeout');
 timeIn.addEventListener('click', function () {
-  for (i = 0; i < timeIn.options.length; i++) {
+  for (var i = 0; i < timeIn.options.length; i++) {
     if (timeIn.options[i].selected) {
       timeOut.options[i].selected = true;
     } else {
