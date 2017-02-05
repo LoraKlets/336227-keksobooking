@@ -1,33 +1,50 @@
 'use strict';
+var ENTER_KEY_CODE = 13;
+var ESCAPE_KEY_CODE = 27;
+
+var isActivateEvent = function (evt) {
+  return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+};
+
 // При нажатии на элемент .pin ему будет добавляться класс .pin--active
 var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 var dialog = document.querySelector('.dialog');
+var dialogTitle = dialog.querySelector('img');
 
-var pinClickHandler = function () {
+var tokyoPinMapHandler = function (evt) {
   var pinActiveElement = tokyoPinMap.querySelector('.pin--active');
   if (pinActiveElement) {
     pinActiveElement.classList.remove('pin--active');
+    var imgPinActiveElement = pinActiveElement.querySelector('img');
+    imgPinActiveElement.setAttribute('aria-pressed', 'false');
   }
-  this.classList.add('pin--active');
+  evt.target.parentNode.classList.add('pin--active');
+  evt.target.setAttribute('aria-pressed', 'true');
+  dialogTitle.src = evt.target.src;
   dialog.classList.remove('invisible');
-};
-var dialogHandler = function () {
-  var pinActiveElement = tokyoPinMap.querySelector('.pin--active');
-  var activeImg = pinActiveElement.querySelector('img');
-  var dialogTitle = dialog.querySelector('img');
-  dialogTitle.src = activeImg.src;
-};
-var pinElements = tokyoPinMap.querySelectorAll('.pin');
+}
+tokyoPinMap.addEventListener('click', tokyoPinMapHandler);
+
+tokyoPinMap.addEventListener('keydown', function (evt) {
+  if (isActivateEvent(evt)) {
+    tokyoPinMapHandler(evt);
+  }
+});
+
+
+/*var pinElements = tokyoPinMap.querySelectorAll('.pin');
 for (var i = 0; i < pinElements.length; i++) {
   pinElements[i].addEventListener('click', pinClickHandler);
+  pinElements[i].addEventListener('keydown', pinKeyDownHandler);
   pinElements[i].addEventListener('click', dialogHandler);
-}
+}*/
 var dialogClose = dialog.querySelector('.dialog__close');
 dialogClose.addEventListener('click', function () {
   var pinActiveElement = tokyoPinMap.querySelector('.pin--active');
   pinActiveElement.classList.remove('pin--active');
   dialog.classList.add('invisible');
 });
+
 var rentTitle = document.querySelector('#title');
 rentTitle.required = true;
 rentTitle.maxLength = 100;
