@@ -1,5 +1,5 @@
 'use strict';
-var window.initializePins = function (element, panel) {
+window.initializePins = function (element, panel) {
   var ENTER_KEY_CODE = 13;
   var isActivateEvent = function (evt) {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
