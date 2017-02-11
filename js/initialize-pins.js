@@ -1,5 +1,5 @@
 'use strict';
-var initializePins = function (element, panel) {
+var window.initializePins = function (element, panel) {
   var ENTER_KEY_CODE = 13;
   var isActivateEvent = function (evt) {
     return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
@@ -14,7 +14,7 @@ var initializePins = function (element, panel) {
       pinActiveElement.classList.remove('pin--active');
       imgPinActiveElement.setAttribute('aria-pressed', 'false');
     }
-  }
+  };
   var elementHandler = function (evt) {
     elementPinHandler();
     evt.target.parentNode.classList.add('pin--active');
@@ -22,7 +22,7 @@ var initializePins = function (element, panel) {
     panelTitle.src = evt.target.src;
     panel.classList.remove('invisible');
     panelClose.setAttribute('aria-pressed', 'false');
-  }
+  };
 
   element.addEventListener('click', elementHandler);
   element.addEventListener('keydown', function (evt) {
@@ -35,11 +35,11 @@ var initializePins = function (element, panel) {
     elementPinHandler();
     panel.classList.add('invisible');
   });
-  panelClose.addEventListener('keydown',function (evt) {
+  panelClose.addEventListener('keydown', function (evt) {
     if (isActivateEvent(evt)) {
       elementPinHandler();
       panel.classList.add('invisible');
       panelClose.setAttribute('aria-pressed', 'true');
     }
   });
-}
+};
