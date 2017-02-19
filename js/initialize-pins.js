@@ -1,11 +1,6 @@
 'use strict';
 window.initializePins = (function () {
   var ENTER_KEY_CODE = 13;
-  var isActivateEvent = function (evt) {
-    return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
-  };
-  // var panelTitle = panel.querySelector('img');
-  // var panelClose = panel.querySelector('.dialog__close');
 
   var pinActiveRemove = function () {
     var pinActiveElement = document.querySelector('.pin--active');
@@ -25,7 +20,7 @@ window.initializePins = (function () {
     isActivateEvent: function (evt) {
       return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
     }
-  }
+  };
 })();
   /* var elementHandler = function (evt) {
      pinActiveRemove();

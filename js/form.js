@@ -2,26 +2,25 @@
 // При нажатии на элемент .pin ему будет добавляться класс .pin--active
 var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 var dialog = document.querySelector('.dialog');
-var panelClose = dialog.querySelector('.dialog__close')
 
 window.dialogHandle(null);
 
 tokyoPinMap.addEventListener('click', function (evt) {
   window.initializePins.elementHandler(evt);
   window.dialogHandle(null);
-  });
+});
 var onDialogCb = function () {
   var activePin = tokyoPinMap.querySelector('.pin--active');
   var imgActivePin = activePin.querySelector('img');
   imgActivePin.focus();
-}
+};
 tokyoPinMap.addEventListener('keydown', function (evt) {
   if (window.initializePins.isActivateEvent(evt)) {
-      window.initializePins.elementHandler(evt);
-      window.dialogHandle(onDialogCb);
+    window.initializePins.elementHandler(evt);
+    window.dialogHandle(onDialogCb);
   }
 });
-/*panelClose.addEventListener('click', function () {
+/* panelClose.addEventListener('click', function () {
   window.initializePins.pinActiveRemove();
   dialog.classList.add('invisible');
 });
@@ -58,7 +57,7 @@ window.synchronizeFields(document.querySelector('#timeout'), document.querySelec
 // синхронизируем количество комнат и число гостей
 window.synchronizeFields(document.querySelector('#room_number'), document.querySelector('#capacity'), ['1', '2', '3'], ['не для гостей', 'для 3 гостей', 'для 3 гостей'], syncValues);
 
-var syncValueWithMin = function(element, value) {
+var syncValueWithMin = function (element, value) {
   element.min = value;
 };
 window.synchronizeFields(document.querySelector('#type'), document.querySelector('#price'), ['квартира', 'лачуга', 'дворец'], ['1000', '0', '10000'], syncValueWithMin);

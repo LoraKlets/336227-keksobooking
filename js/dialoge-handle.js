@@ -1,7 +1,7 @@
 'use strict';
 window.dialogHandle = (function () {
   var dialog = document.querySelector('.dialog');
-  var pinDialogClose = dialog.querySelector('.dialog__close')
+  var pinDialogClose = dialog.querySelector('.dialog__close');
   var onDialogClose;
   var ESCAPE_KEY_CODE = 27;
 
