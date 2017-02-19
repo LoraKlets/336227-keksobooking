@@ -4,5 +4,5 @@ window.showCard = (function () {
   var dialogTitle = dialog.querySelector('img');
   var activePin = document.querySelector('.pin--active');
   var imgActivePin = activePin.querySelector('img');
-  dialogTitle.src = imgActivePin.src; 
+  dialogTitle.src = imgActivePin.src;
 });
