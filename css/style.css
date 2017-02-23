@@ -527,7 +527,10 @@ select option:hover {
 .invisible {
   display: none !important;
 }
-
+.lodge__photos img {
+   margin-left: 5px;
+   margin-top: 3px;
+}
 .lodge__title {
     margin: 0 0 4px;
     font-size: 16px;

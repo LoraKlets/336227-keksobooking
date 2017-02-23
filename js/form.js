@@ -19,20 +19,6 @@ tokyoPinMap.addEventListener('keydown', function (evt) {
     window.dialogHandle(onDialogCb);
   }
 });
-/* panelClose.addEventListener('click', function () {
-  window.initializePins.pinActiveRemove();
-  dialog.classList.add('invisible');
-});
-var onPanelClose = function () {
-
-};
-panelClose.addEventListener('keydown', function (evt) {
-  if (window.initializePins.isActivateEvent(evt)) {
-    window.initializePins.pinActiveRemove();
-    dialog.classList.add('invisible');
-    panelClose.setAttribute('aria-pressed', 'true');
-  }
-});*/
 
 var rentTitle = document.querySelector('#title');
 rentTitle.required = true;
