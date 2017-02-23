@@ -13,7 +13,7 @@ window.dialogHandle = (function () {
   var dialogOpen = function () {
     dialog.classList.remove('invisible');
     document.addEventListener('keydown', dialogKeydownHandler);
-    window.showCard();
+    // window.showCard();
   };
   var dialogClose = function () {
     dialog.classList.add('invisible');

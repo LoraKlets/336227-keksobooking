@@ -1,7 +1,17 @@
 'use strict';
 window.initializePins = (function () {
   var ENTER_KEY_CODE = 13;
+  var DATA_URL = 'https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data';
+  var similarApartments = [];
+  var tokyoPinMap = document.querySelector('.tokyo__pin-map');
+  var onLoad = function(p) {
+    similarApartments = JSON.parse(p);
 
+    for (var i = 0; i < similarApartments.length; i++){
+
+      tokyoPinMap.appendChild(window.render(similarApartments[i],i));
+    }
+  };
   var pinActiveRemove = function () {
     var pinActiveElement = document.querySelector('.pin--active');
     if (pinActiveElement) {
@@ -10,30 +20,18 @@ window.initializePins = (function () {
       imgPinActiveElement.setAttribute('aria-pressed', 'false');
     }
   };
+  window.load(DATA_URL, onLoad);
   return {
     pinActiveRemove: pinActiveRemove,
     elementHandler: function (evt) {
       window.initializePins.pinActiveRemove();
       evt.target.parentNode.classList.add('pin--active');
       evt.target.setAttribute('aria-pressed', 'true');
-    },
+
+      window.showCard(evt.target, similarApartments[evt.target.id].offer);
+     },
     isActivateEvent: function (evt) {
       return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
     }
   };
 })();
-  /* var elementHandler = function (evt) {
-     pinActiveRemove();
-     evt.target.parentNode.classList.add('pin--active');
-     evt.target.setAttribute('aria-pressed', 'true');
-     // panelTitle.src = evt.target.src;
-     // panel.classList.remove('invisible');
-     // panelClose.setAttribute('aria-pressed', 'false');
-   };
-
-   //element.addEventListener('click', elementHandler);
-  // element.addEventListener('keydown', function (evt) {
-     if (isActivateEvent(evt)) {
-         elementHandler(evt);
-       }
-   });*/

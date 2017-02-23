@@ -1,7 +1,7 @@
 'use strict';
 // При нажатии на элемент .pin ему будет добавляться класс .pin--active
 var tokyoPinMap = document.querySelector('.tokyo__pin-map');
-
+var similarApart = [];
 window.dialogHandle(null);
 
 tokyoPinMap.addEventListener('click', function (evt) {
