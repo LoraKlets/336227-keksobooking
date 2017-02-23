@@ -4,12 +4,11 @@ window.initializePins = (function () {
   var DATA_URL = 'https://intensive-javascript-server-pedmyactpq.now.sh/keksobooking/data';
   var similarApartments = [];
   var tokyoPinMap = document.querySelector('.tokyo__pin-map');
-  var onLoad = function(p) {
+  var onLoad = function (p) {
     similarApartments = JSON.parse(p);
 
-    for (var i = 0; i < similarApartments.length; i++){
-
-      tokyoPinMap.appendChild(window.render(similarApartments[i],i));
+    for (var i = 0; i < similarApartments.length; i++) {
+      tokyoPinMap.appendChild(window.render(similarApartments[i], i));
     }
   };
   var pinActiveRemove = function () {

@@ -2,11 +2,11 @@
 window.render = (function () {
   var pinTemplate = document.querySelector('#pin-template');
   var pinToClone = pinTemplate.content.querySelector('.pin');
-  return function(pin,n) {
+  return function (pin, n) {
 
     var pinElement = pinToClone.cloneNode(true);
-    pinElement.style.left = pin.location.x+'px';
-    pinElement.style.top = pin.location.y+'px';
+    pinElement.style.left = pin.location.x + 'px';
+    pinElement.style.top = pin.location.y + 'px';
 
     var imgElement = pinElement.children[0];
     imgElement.src = pin.author.avatar;
@@ -16,5 +16,5 @@ window.render = (function () {
     imgElement.setAttribute('aria-pressed', 'false');
 
     return pinElement;
-  }
+  };
 })();
