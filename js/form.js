@@ -2,11 +2,11 @@
 // При нажатии на элемент .pin ему будет добавляться класс .pin--active
 var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 
-window.dialogHandle(null);
+window.dialogHandle.openDia(null);
 
 tokyoPinMap.addEventListener('click', function (evt) {
   window.initializePins.elementHandler(evt);
-  window.dialogHandle(null);
+  window.dialogHandle.openDia(null);
 });
 var onDialogCb = function () {
   var activePin = tokyoPinMap.querySelector('.pin--active');
@@ -16,7 +16,7 @@ var onDialogCb = function () {
 tokyoPinMap.addEventListener('keydown', function (evt) {
   if (window.initializePins.isActivateEvent(evt)) {
     window.initializePins.elementHandler(evt);
-    window.dialogHandle(onDialogCb);
+    window.dialogHandle.openDia(onDialogCb);
   }
 });
 

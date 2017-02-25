@@ -7,6 +7,7 @@ window.render = (function () {
     var pinElement = pinToClone.cloneNode(true);
     pinElement.style.left = pin.location.x + 'px';
     pinElement.style.top = pin.location.y + 'px';
+    pinElement.classList.add('new');
 
     var imgElement = pinElement.children[0];
     imgElement.src = pin.author.avatar;
