@@ -14,47 +14,48 @@ window.initializePins = (function () {
     var housingFeatures = tokyoFilters.querySelectorAll('.feature');
     for (var j = 0; j < housingFeatures.length; j++) {
       if ((housingFeatures[j].children[0].checked) && (pinData.offer.features.indexOf(housingFeatures[j].children[0].value) === -1)) {
-      filtrZna = false;
-      }
-    };
-    var filterSelect = tokyoFilters.querySelectorAll('.tokyo__filter');
-    var filtrNam = ['type','price','rooms','guests'];
-    for (var j = 0; j < filterSelect.length; j++) {
-      if (j != 1) {
-        if ((filterSelect[j].value != 'any') && (filterSelect[j].value != pinData.offer[filtrNam[j]])) {
         filtrZna = false;
+      }
+    }
+    var filterSelect = tokyoFilters.querySelectorAll('.tokyo__filter');
+    var filtrNam = ['type', 'price', 'rooms', 'guests'];
+    for (j = 0; j < filterSelect.length; j++) {
+      if (j !== 1) {
+        if ((filterSelect[j].value !== 'any') && (filterSelect[j].value !== pinData.offer[filtrNam[j]])) {
+          filtrZna = false;
         }
-    } else {
+      } else {
         switch (filterSelect[j].value) {
-            case 'low':
-              if (pinData.offer[filtrNam[j]] > 10000) {
-               filtrZna = false;
-              }
-              break;
-            case 'middle':
-              if ((pinData.offer[filtrNam[j]] < 10000) || ( pinData.offer[filtrNam[j]] > 50000)) {
-                filtrZna = false;
-              }
-              break;
-            case 'hight':
-              if (pinData.offer[filtrNam[j]] < 50000) {
-                filtrZna = false;
-              }
-              break;
-        };
-      };
+          case 'low':
+            if (pinData.offer[filtrNam[j]] > 10000) {
+              filtrZna = false;
+            }
+            break;
+          case 'middle':
+            if ((pinData.offer[filtrNam[j]] < 10000) || ( pinData.offer[filtrNam[j]] > 50000)) {
+              filtrZna = false;
+            }
+            break;
+          case 'hight':
+            if (pinData.offer[filtrNam[j]] < 50000) {
+              filtrZna = false;
+            }
+            break;
+        }
+      }
     }
     return filtrZna;
   };
   tokyoFiltrSet.addEventListener('click', function (evt) {
-    if (evt.target.nodeName === 'INPUT'){
+    if (evt.target.nodeName === 'INPUT') {
       var pins = tokyoPinMap.querySelectorAll('.new');
       for (var i = 0; i < pins.length; i++) {
         tokyoPinMap.removeChild(pins[i]);
-      };
-       window.dialogHandle.dialogClose();
-      similarApartments.forEach(function (item, i, similarApartments) {
-        if (filtr(item)) { tokyoPinMap.appendChild(window.render(item, i));
+      }
+      window.dialogHandle.dialogClose();
+      similarApartments.forEach(function (item, i1, similarApartments) {
+        if (filtr(item)) {
+          tokyoPinMap.appendChild(window.render(item, i1));
         }
       });
     }
@@ -63,24 +64,26 @@ window.initializePins = (function () {
     var pins = tokyoPinMap.querySelectorAll('.new');
     for (var i = 0; i < pins.length; i++) {
       tokyoPinMap.removeChild(pins[i]);
-    };
-     window.dialogHandle.dialogClose();
-    similarApartments.forEach(function (item, i, similarApartments) {
-      if (filtr(item)) { tokyoPinMap.appendChild(window.render(item, i));
+    }
+    window.dialogHandle.dialogClose();
+    similarApartments.forEach(function (item, i2, similarApartments) {
+      if (filtr(item)) {
+        tokyoPinMap.appendChild(window.render(item, i2));
       }
     });
   });
 
   var onLoad = function (p) {
     similarApartments = JSON.parse(p);
-    console.log(similarApartments[0]);
+
     var pins = tokyoPinMap.querySelectorAll('.new');
-    for (var i = 0; i < pins.length; i++) {
+    for (i = 0; i < pins.length; i++) {
       tokyoPinMap.removeChild(pins[i]);
     }
     window.dialogHandle.dialogClose();
-    similarApartments.forEach(function (item, i, similarApartments) {
-      if (filtr(item)) { tokyoPinMap.appendChild(window.render(item, i));
+    similarApartments.forEach(function (item, i3, similarApartments) {
+      if (filtr(item)) {
+        tokyoPinMap.appendChild(window.render(item, i3));
       }
     });
   };
@@ -101,7 +104,7 @@ window.initializePins = (function () {
       evt.target.setAttribute('aria-pressed', 'true');
 
       window.showCard(evt.target, similarApartments[evt.target.id].offer);
-     },
+    },
     isActivateEvent: function (evt) {
       return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
     }

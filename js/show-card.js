@@ -22,7 +22,7 @@ window.showCard = (function (pin, obj) {
   }
   dialog.querySelector('.lodge__type').innerText = loageType;
   dialog.querySelector('.lodge__rooms-and-guests').innerText = obj.rooms + ' комнаты для ' + ' ' + obj.guests + 'гостей';
-  dialog.querySelector('.lodge__checkin-time').innerText ='Заед после ' + obj.checkin + ', выезд до ' + obj.checkout;
+  dialog.querySelector('.lodge__checkin-time').innerText = 'Заед после ' + obj.checkin + ', выезд до ' + obj.checkout;
   var features = dialog.querySelector('.lodge__features');
   features.innerHTML = '';
   var elem;

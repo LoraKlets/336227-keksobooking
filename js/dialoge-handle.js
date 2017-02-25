@@ -30,12 +30,12 @@ window.dialogHandle = (function () {
       dialogClose();
     }
   };
-  return { openDia: function (cb) {
+  return {openDia: function (cb) {
     dialogOpen();
     pinDialogClose.addEventListener('keydown', onKeyDown);
     pinDialogClose.addEventListener('click', dialogClose);
     onDialogClose = cb;
-    },
-    dialogClose:dialogClose
-  }
+  },
+  dialogClose:dialogClose
+  };
 })();
