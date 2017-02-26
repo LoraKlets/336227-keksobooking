@@ -6,7 +6,7 @@ window.initializePins = (function () {
   var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 
   var tokyoFilters = document.querySelector('.tokyo__filters');
-  var rentAddress = document.querySelector('#address');
+
 
   var tokyoFiltrSet = tokyoFilters.querySelector('.tokyo__filter-set');
 
@@ -88,9 +88,11 @@ window.initializePins = (function () {
     }
   };
   var mainPin = tokyoPinMap.querySelector('.pin__main');
+  var rentAddress = document.querySelector('#address');
+  console.log(mainPin.clientHeight + '  ' + mainPin.clientWidth);
   var endCoords = {
-    x: mainPin.offsetLeft,
-    y: mainPin.offsetTop
+    x: mainPin.offsetLeft + Math.floor(mainPin.clientWidth / 2),
+    y: mainPin.offsetTop + mainPin.clientHeight
   };
   var onMouseDown = function (evt) {
     evt.preventDefault();
@@ -112,8 +114,8 @@ window.initializePins = (function () {
         y: moveEvt.clientY
       };
 
-      endCoords.x = mainPin.offsetLeft - shift.x;
-      endCoords.y = mainPin.offsetTop - shift.y;
+      endCoords.x = endCoords.x - shift.x;
+      endCoords.y = endCoords.y - shift.y;
 
       rentAddress.value = 'x: ' + endCoords.x + '   y:  ' + endCoords.y;
 
