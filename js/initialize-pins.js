@@ -89,7 +89,7 @@ window.initializePins = (function () {
   };
   var mainPin = tokyoPinMap.querySelector('.pin__main');
   var rentAddress = document.querySelector('#address');
-  console.log(mainPin.clientHeight + '  ' + mainPin.clientWidth);
+  
   var endCoords = {
     x: mainPin.offsetLeft + Math.floor(mainPin.clientWidth / 2),
     y: mainPin.offsetTop + mainPin.clientHeight
