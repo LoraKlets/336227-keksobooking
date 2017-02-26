@@ -2,11 +2,13 @@
 // При нажатии на элемент .pin ему будет добавляться класс .pin--active
 var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 
-window.dialogHandle.openDia(null);
+window.dialogHandle.openDialog(null);
 
 tokyoPinMap.addEventListener('click', function (evt) {
-  window.initializePins.elementHandler(evt);
-  window.dialogHandle.openDia(null);
+  if (evt.target.parentElement.classList["value"].indexOf('new') !== -1) {
+    window.initializePins.elementHandler(evt);
+    window.dialogHandle.openDialog(null);
+  }
 });
 var onDialogCb = function () {
   var activePin = tokyoPinMap.querySelector('.pin--active');
@@ -16,16 +18,18 @@ var onDialogCb = function () {
 tokyoPinMap.addEventListener('keydown', function (evt) {
   if (window.initializePins.isActivateEvent(evt)) {
     window.initializePins.elementHandler(evt);
-    window.dialogHandle.openDia(onDialogCb);
+    window.dialogHandle.openDialog(onDialogCb);
   }
 });
 
 var rentTitle = document.querySelector('#title');
 rentTitle.required = true;
 rentTitle.maxLength = 100;
+// минимальная длина объявления проверяется с помощью  pattern="[\s\S]{30,} в поле <input id="title" >
 
 var rentAddress = document.querySelector('#address');
 rentAddress.required = true;
+rentAddress.value ='x: ' + window.initializePins.endCoords.x + '   y:  ' + window.initializePins.endCoords.y;
 
 var rentPrice = document.querySelector('#price');
 rentPrice.required = true;

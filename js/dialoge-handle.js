@@ -30,7 +30,7 @@ window.dialogHandle = (function () {
       dialogClose();
     }
   };
-  return {openDia: function (cb) {
+  return {openDialog: function (cb) {
     dialogOpen();
     pinDialogClose.addEventListener('keydown', onKeyDown);
     pinDialogClose.addEventListener('click', dialogClose);

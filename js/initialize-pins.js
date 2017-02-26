@@ -6,6 +6,7 @@ window.initializePins = (function () {
   var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 
   var tokyoFilters = document.querySelector('.tokyo__filters');
+  var rentAddress = document.querySelector('#address');
 
   var tokyoFiltrSet = tokyoFilters.querySelector('.tokyo__filter-set');
 
@@ -19,12 +20,12 @@ window.initializePins = (function () {
     }
     var filterSelect = tokyoFilters.querySelectorAll('.tokyo__filter');
     var filtrNam = ['type', 'price', 'rooms', 'guests'];
-    for (j = 0; j < filterSelect.length; j++) {
-      if (j !== 1) {
-        if ((filterSelect[j].value !== 'any') && (filterSelect[j].value !== pinData.offer[filtrNam[j]])) {
+    for (var j = 0; j < filterSelect.length; j++) {
+      if (j !== 1) { //это не цена
+        if ((filterSelect[j].value !== 'any') &&  (filterSelect[j].value !==   String(pinData.offer[filtrNam[j]]))) {
           filtrZna = false;
         }
-      } else {
+    } else { // поле цены обрабатывается особо
         switch (filterSelect[j].value) {
           case 'low':
             if (pinData.offer[filtrNam[j]] > 10000) {
@@ -77,16 +78,61 @@ window.initializePins = (function () {
     similarApartments = JSON.parse(p);
 
     var pins = tokyoPinMap.querySelectorAll('.new');
-    for (i = 0; i < pins.length; i++) {
+    for (var i = 0; i < pins.length; i++) {
       tokyoPinMap.removeChild(pins[i]);
     }
     window.dialogHandle.dialogClose();
-    similarApartments.forEach(function (item, i3, similarApartments) {
-      if (filtr(item)) {
-        tokyoPinMap.appendChild(window.render(item, i3));
-      }
-    });
+    for (var i = 0; i < 3; i++){
+      tokyoPinMap.appendChild(window.render(similarApartments[i], i));
+    }
   };
+  var mainPin = tokyoPinMap.querySelector('.pin__main');
+  var endCoords = {
+    x: mainPin.offsetLeft,
+    y: mainPin.offsetTop
+  };
+  var onMouseDown = function (evt) {
+    evt.preventDefault();
+
+    var startCoords = {
+      x: evt.clientX,
+      y: evt.clientY
+    };
+
+    var onMouseMove = function (moveEvt) {
+      moveEvt.preventDefault();
+      var shift = {
+        x: startCoords.x - moveEvt.clientX,
+        y: startCoords.y - moveEvt.clientY
+      };
+
+      startCoords = {
+        x: moveEvt.clientX,
+        y: moveEvt.clientY
+      };
+
+      endCoords.x = mainPin.offsetLeft - shift.x;
+      endCoords.y = mainPin.offsetTop - shift.y;
+
+      rentAddress.value ='x: ' + endCoords.x + '   y:  ' + endCoords.y;
+
+      mainPin.style.top = (mainPin.offsetTop - shift.y) + 'px';
+      mainPin.style.left = (mainPin.offsetLeft - shift.x) + 'px';
+    };
+
+    var onMouseUp = function (upEvt) {
+      upEvt.preventDefault();
+
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+
+  }
+
+  mainPin.addEventListener('mousedown', onMouseDown);
   var pinActiveRemove = function () {
     var pinActiveElement = document.querySelector('.pin--active');
     if (pinActiveElement) {
@@ -107,6 +153,7 @@ window.initializePins = (function () {
     },
     isActivateEvent: function (evt) {
       return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
-    }
+    },
+    endCoords: endCoords
   };
 })();
