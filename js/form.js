@@ -5,7 +5,7 @@ var tokyoPinMap = document.querySelector('.tokyo__pin-map');
 window.dialogHandle.openDialog(null);
 
 tokyoPinMap.addEventListener('click', function (evt) {
-  if (evt.target.parentElement.classList["value"].indexOf('new') !== -1) {
+  if (evt.target.parentElement.classList['value'].indexOf('new') !== -1) {
     window.initializePins.elementHandler(evt);
     window.dialogHandle.openDialog(null);
   }
@@ -29,7 +29,7 @@ rentTitle.maxLength = 100;
 
 var rentAddress = document.querySelector('#address');
 rentAddress.required = true;
-rentAddress.value ='x: ' + window.initializePins.endCoords.x + '   y:  ' + window.initializePins.endCoords.y;
+rentAddress.value = 'x: ' + window.initializePins.endCoords.x + '   y:  ' + window.initializePins.endCoords.y;
 
 var rentPrice = document.querySelector('#price');
 rentPrice.required = true;

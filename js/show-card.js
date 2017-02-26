@@ -79,5 +79,5 @@ window.showCard = (function (pin, obj) {
 
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
-    });
+  });
 });

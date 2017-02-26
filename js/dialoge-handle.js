@@ -19,10 +19,14 @@ window.dialogHandle = (function () {
     dialog.classList.add('invisible');
     document.removeEventListener('keydown', dialogKeydownHandler);
 
-
     if (typeof onDialogClose === 'function') {
       onDialogClose();
     }
+    window.initializePins.pinActiveRemove();
+  };
+  var dialogCloseShort = function () {
+    dialog.classList.add('invisible');
+    document.removeEventListener('keydown', dialogKeydownHandler);
     window.initializePins.pinActiveRemove();
   };
   var onKeyDown = function (evt) {
@@ -36,6 +40,6 @@ window.dialogHandle = (function () {
     pinDialogClose.addEventListener('click', dialogClose);
     onDialogClose = cb;
   },
-  dialogClose:dialogClose
+    dialogCloseShort: dialogCloseShort
   };
 })();

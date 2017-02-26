@@ -20,12 +20,12 @@ window.initializePins = (function () {
     }
     var filterSelect = tokyoFilters.querySelectorAll('.tokyo__filter');
     var filtrNam = ['type', 'price', 'rooms', 'guests'];
-    for (var j = 0; j < filterSelect.length; j++) {
-      if (j !== 1) { //это не цена
-        if ((filterSelect[j].value !== 'any') &&  (filterSelect[j].value !==   String(pinData.offer[filtrNam[j]]))) {
+    for (j = 0; j < filterSelect.length; j++) {
+      if (j !== 1) { // это не цена
+        if ((filterSelect[j].value !== 'any') && (filterSelect[j].value !== String(pinData.offer[filtrNam[j]]))) {
           filtrZna = false;
         }
-    } else { // поле цены обрабатывается особо
+      } else { // поле цены обрабатывается особо
         switch (filterSelect[j].value) {
           case 'low':
             if (pinData.offer[filtrNam[j]] > 10000) {
@@ -33,7 +33,7 @@ window.initializePins = (function () {
             }
             break;
           case 'middle':
-            if ((pinData.offer[filtrNam[j]] < 10000) || ( pinData.offer[filtrNam[j]] > 50000)) {
+            if ((pinData.offer[filtrNam[j]] < 10000) || (pinData.offer[filtrNam[j]] > 50000)) {
               filtrZna = false;
             }
             break;
@@ -53,7 +53,7 @@ window.initializePins = (function () {
       for (var i = 0; i < pins.length; i++) {
         tokyoPinMap.removeChild(pins[i]);
       }
-      window.dialogHandle.dialogClose();
+      window.dialogHandle.dialogCloseShort();
       similarApartments.forEach(function (item, i1, similarApartments) {
         if (filtr(item)) {
           tokyoPinMap.appendChild(window.render(item, i1));
@@ -61,12 +61,13 @@ window.initializePins = (function () {
       });
     }
   });
+
   tokyoFilters.addEventListener('click', function (evt) {
     var pins = tokyoPinMap.querySelectorAll('.new');
     for (var i = 0; i < pins.length; i++) {
       tokyoPinMap.removeChild(pins[i]);
     }
-    window.dialogHandle.dialogClose();
+    window.dialogHandle.dialogCloseShort();
     similarApartments.forEach(function (item, i2, similarApartments) {
       if (filtr(item)) {
         tokyoPinMap.appendChild(window.render(item, i2));
@@ -81,8 +82,8 @@ window.initializePins = (function () {
     for (var i = 0; i < pins.length; i++) {
       tokyoPinMap.removeChild(pins[i]);
     }
-    window.dialogHandle.dialogClose();
-    for (var i = 0; i < 3; i++){
+    window.dialogHandle.dialogCloseShort();
+    for (i = 0; i < 3; i++) {
       tokyoPinMap.appendChild(window.render(similarApartments[i], i));
     }
   };
@@ -114,7 +115,7 @@ window.initializePins = (function () {
       endCoords.x = mainPin.offsetLeft - shift.x;
       endCoords.y = mainPin.offsetTop - shift.y;
 
-      rentAddress.value ='x: ' + endCoords.x + '   y:  ' + endCoords.y;
+      rentAddress.value = 'x: ' + endCoords.x + '   y:  ' + endCoords.y;
 
       mainPin.style.top = (mainPin.offsetTop - shift.y) + 'px';
       mainPin.style.left = (mainPin.offsetLeft - shift.x) + 'px';
@@ -130,7 +131,7 @@ window.initializePins = (function () {
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
 
-  }
+  };
 
   mainPin.addEventListener('mousedown', onMouseDown);
   var pinActiveRemove = function () {
