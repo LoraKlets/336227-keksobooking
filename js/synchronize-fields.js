@@ -14,5 +14,5 @@ window.synchronizeFields = (function () {
         syncValues(elem2, valuesElem2[getIndexValue()]);
       }
     });
-  }
+  };
 })();

@@ -1,7 +1,5 @@
 'use strict';
 window.form = (function () {
-  var tokyoPinMap = document.querySelector('.tokyo__pin-map');
-
   var rentTitle = document.querySelector('#title');
   rentTitle.required = true;
   rentTitle.maxLength = 100;

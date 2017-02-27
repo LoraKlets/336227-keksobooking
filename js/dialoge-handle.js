@@ -42,5 +42,5 @@ window.dialogHandle = (function () {
       onDialogClose = onDialogCl;
     },
     closeDialog: dialogClose
-    };
+  };
 })();
