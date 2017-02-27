@@ -11,10 +11,10 @@ window.render = (function () {
 
     var imgElement = pinElement.children[0];
     imgElement.src = pin.author.avatar;
-    imgElement.setAttribute('id', n);
     imgElement.setAttribute('tabindex', 1);
     imgElement.setAttribute('role', 'button');
     imgElement.setAttribute('aria-pressed', 'false');
+    imgElement.setAttribute('id', n);
 
     return pinElement;
   };

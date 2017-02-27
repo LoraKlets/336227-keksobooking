@@ -10,36 +10,37 @@ window.dialogHandle = (function () {
       dialog.classList.add('invisible');
     }
   };
+
   var dialogOpen = function () {
     dialog.classList.remove('invisible');
     document.addEventListener('keydown', dialogKeydownHandler);
-    // window.showCard();
   };
+
   var dialogClose = function () {
     dialog.classList.add('invisible');
     document.removeEventListener('keydown', dialogKeydownHandler);
-
-    if (typeof onDialogClose === 'function') {
-      onDialogClose();
+    var pinActiveElement = document.querySelector('.pin--active');
+    if (pinActiveElement) {
+      pinActiveElement.classList.remove('pin--active');
+      pinActiveElement.children[0].setAttribute('aria-pressed', 'false');
     }
-    window.initializePins.pinActiveRemove();
   };
-  var dialogCloseShort = function () {
-    dialog.classList.add('invisible');
-    document.removeEventListener('keydown', dialogKeydownHandler);
-    window.initializePins.pinActiveRemove();
-  };
+
   var onKeyDown = function (evt) {
     if (window.initializePins.isActivateEvent(evt)) {
+      if (typeof onDialogClose === 'function') {
+        onDialogClose();
+      }
       dialogClose();
     }
   };
-  return {openDialog: function (cb) {
-    dialogOpen();
-    pinDialogClose.addEventListener('keydown', onKeyDown);
-    pinDialogClose.addEventListener('click', dialogClose);
-    onDialogClose = cb;
-  },
-    dialogCloseShort: dialogCloseShort
-  };
+  return {
+    openDialog: function (onDialogCl) {
+      dialogOpen();
+      pinDialogClose.addEventListener('keydown', onKeyDown);
+      pinDialogClose.addEventListener('click', dialogClose);
+      onDialogClose = onDialogCl;
+    },
+    closeDialog: dialogClose
+    };
 })();
